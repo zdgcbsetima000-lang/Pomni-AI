@@ -7,17 +7,15 @@ import sub from './sub.js';
 const client = new Client({
   phoneNumber: '20123456789', // Bot number
   prefix: [".", "/", "!"],
-  fromMe: false, 
+  fromMe: false,
+
   owners: [
-  // Owner 1
-    { name: "VA", lid: "247579682029763@lid", jid: "972569311531@s.whatsapp.net" },
-  // Owner 2
-    { name: "emam", lid: "221307316789354@lid", jid: "201144480436@s.whatsapp.net" },
-  // Owner 3
-    { name: "Sukuna", jid: "201033024135@s.whatsapp.net", lid: "50414477168824@lid" },
-  // Owner 4 
-   { name: "عمورتي", jid: "201050079089@s.whatsapp.net", lid: "51664513925368@lid" }
+    {
+      name: "M.ЄĿ§ĦÂƒЄყ (الشافعي)",
+      jid: "201127562948@s.whatsapp.net"
+    }
   ],
+
   settings: { noWelcome: false },
   commandsPath: './plugins'
 });
@@ -27,24 +25,28 @@ client.onCommandAccess(access);
 
 /* =========== Database ========== */
 if (!global.db) {
-    global.db = new UltraDB();
+  global.db = new UltraDB();
 }
 
 /* =========== Config ========== */
 const { config } = client;
-config.info = { 
-  nameBot: "♡ 𝙋𝙊𝙈𝙉𝙄 🎪 〈", 
-  nameChannel: "𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️", 
+
+config.info = {
+  nameBot: "♡ 𝙋𝙊𝙈𝙉𝙄 🎪 〈",
+  nameChannel: "𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️",
   idChannel: "120363225356834044@newsletter",
+
   urls: {
-    repo: "https://github.com/M.ЄĿ§ĦÂƒЄყ (الشافعي)/Pomni-AI",
+    repo: "https://github.com/deveni0/Pomni-AI",
     api: "https://emam-api.web.id",
     channel: "https://whatsapp.com/channel/0029VaQim2bAu3aPsRVaDq3v"
   },
-  copyright: { 
-    pack: 'ڤـ ـ VA ـ ـا', 
-    author: 'VA'
+
+  copyright: {
+    pack: "M.ЄĿ§ĦÂƒЄყ (الشافعي)",
+    author: "M.ЄĿ§ĦÂƒЄყ (الشافعي)"
   },
+
   images: [
     "https://i.pinimg.com/originals/11/26/97/11269786cdb625c60213212aa66273a9.png",
     "https://i.pinimg.com/originals/e2/21/20/e221203f319df949ee65585a657501a2.jpg",
@@ -56,31 +58,33 @@ config.info = {
 client.start();
 
 setTimeout(async () => {
-if (client.commandSystem) { 
-sub(client)
+  if (client.commandSystem) {
+    sub(client);
   }
 }, 2000);
 
-
 /* =========== Catch Errors ========== */
 process.on('uncaughtException', (e) => {
-    if (e.message.includes('rate-overlimit')) {}
+  if (e.message.includes('rate-overlimit')) {}
 });
 
 process.on('unhandledRejection', (err) => {
-    console.error('Unhandled Rejection:', err)
+  console.error('Unhandled Rejection:', err);
 });
 
-
-/* 
-=========== Memory Monitor ========== 
+/*
+=========== Memory Monitor ==========
 
 setInterval(() => {
-    const used = process.memoryUsage().rss / 1024 / 1024
-    if (used > 800) {
-        console.log(`🔄 Bot memory full (${used.toFixed(1)}MB), restarting...`)
-        process.exit(1) 
-    }
-}, 300_000) 
+  const used = process.memoryUsage().rss / 1024 / 1024;
+
+  if (used > 800) {
+    console.log(
+      `🔄 Bot memory full (${used.toFixed(1)}MB), restarting...`
+    );
+
+    process.exit(1);
+  }
+}, 300_000);
 
 */
